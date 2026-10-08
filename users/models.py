@@ -10,10 +10,12 @@ class UserManager(BaseUserManager):
     def create_user(self, username, password=None):
         if not username:
             raise ValueError("Username is required")
+
         user = self.model(username=username)
-        # Hashed with Argon2 (see PASSWORD_HASHERS in settings).
+
         user.set_password(password)
         user.save(using=self._db)
+
         return user
 
 
@@ -23,7 +25,6 @@ class User(AbstractBaseUser):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # Drop the last_login column inherited from AbstractBaseUser.
     last_login = None
 
     objects = UserManager()
