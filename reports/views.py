@@ -2,10 +2,15 @@ import json
 
 from django.core.exceptions import ValidationError
 from django.http import JsonResponse
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
 from .models import FakeReport
+
+
+def submit(request):
+    return render(request, "reports/submit.html")
 
 
 # Anonymous public endpoint: no session auth involved, so CSRF protection is not needed.
