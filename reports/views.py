@@ -27,7 +27,7 @@ def create_report(request):
     report = FakeReport(
         link=str(data.get("link", "")).strip(),
         description=str(data.get("description", "")).strip(),
-        author=str(data.get("author", "")).strip(),
+        reporter=str(data.get("reporter", "")).strip(),
     )
     try:
         report.full_clean(exclude=["status", "reviewed_by"])

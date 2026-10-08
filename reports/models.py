@@ -12,7 +12,7 @@ class FakeReport(models.Model):
 
     link = models.URLField(max_length=2048, blank=True)
     description = models.TextField()
-    author = models.CharField(max_length=255, blank=True)
+    reporter = models.CharField(max_length=255, blank=True)
     status = models.CharField(
         max_length=16, choices=Status.choices, default=Status.PENDING
     )

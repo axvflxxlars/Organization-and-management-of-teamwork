@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ),
                 ("link", models.URLField(blank=True, max_length=2048)),
                 ("description", models.TextField()),
-                ("author", models.CharField(blank=True, max_length=255)),
+                ("reporter", models.CharField(blank=True, max_length=255)),
                 (
                     "status",
                     models.CharField(
