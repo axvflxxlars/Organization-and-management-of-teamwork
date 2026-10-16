@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}ФАКТОРАМА{% endblock %}</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{% static 'pages/style.css' %}">
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+
+  <header class="bg-blue-700 text-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div class="bg-blue-800 p-2 rounded-lg">
+          <svg class="w-6 h-6 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <div>
+          <a href="{% url 'pages:home' %}" class="text-2xl font-black tracking-tight block leading-none">ФАКТОРАМА</a>
+          <span class="text-[10px] text-blue-200 tracking-wider uppercase font-semibold">Стоп Фейк & Медіаграмотність</span>
+        </div>
+      </div>
+
+      {% with current=request.resolver_match.url_name %}
+      <nav class="hidden md:flex space-x-6 font-medium text-sm items-center">
+        <a href="{% url 'pages:home' %}#facts" class="hover:text-blue-200 transition">Головні факти</a>
+        <a href="{% url 'pages:home' %}#news" class="hover:text-blue-200 transition">Стрічка спростувань</a>
+        <a href="{% url 'reports:submit' %}" class="{% if current == 'submit' %}text-blue-200 font-bold{% else %}hover:text-blue-200{% endif %} transition">Надіслати фейк</a>
+      </nav>
+      {% endwith %}
+
+      <div class="flex items-center space-x-3">
+        {% block header_actions %}{% endblock %}
+      </div>
+    </div>
+  </header>
+
+  <main class="{% block main_class %}max-w-6xl mx-auto px-4 py-8 flex-grow w-full{% endblock %}">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block modals %}{% endblock %}
+
+  <footer class="bg-slate-900 text-gray-300 border-t border-slate-800 py-10 mt-16">
+    <div class="max-w-6xl mx-auto px-4 text-center space-y-4">
+      <h3 class="text-xl font-bold text-white tracking-tight">Проєкт медіаграмотності «ФАКТОРАМА»</h3>
+      <p class="text-sm text-slate-400 max-w-xl mx-auto">Платформа створена для підвищення рівня медіагігієни, виявлення маніпуляцій та боротьби з дезінформацією в українському інформаційному просторі.</p>
+      <div class="text-xs text-slate-500 pt-6 border-t border-slate-800">&copy; 2026 ФАКТОРАМА — Платформа перевірки фактів. Всі права захищено.</div>
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>
