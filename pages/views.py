@@ -4,7 +4,7 @@ from reports.models import FakeReport, Refutation
 
 
 def home(request):
-    refutations = Refutation.objects.select_related("fake_report").filter(
+    refutations = Refutation.objects.select_related("fake_report__reviewed_by").filter(
         fake_report__status=FakeReport.Status.APPROVED
     )
     modal_data = [
@@ -16,6 +16,8 @@ def home(request):
             "link": r.link,
             "image": r.image.url if r.image else "",
             "fakeText": r.fake_report.description,
+            "reporter": r.fake_report.reporter or "Анонімно",
+            "reviewer": r.fake_report.reviewed_by.username if r.fake_report.reviewed_by else "—",
             "text": r.text,
         }
         for r in refutations

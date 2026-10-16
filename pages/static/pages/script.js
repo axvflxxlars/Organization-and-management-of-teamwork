@@ -96,6 +96,8 @@ function openArticleModal(id) {
   if (!article) return;
 
   document.getElementById('modal-title').innerText = article.title;
+  document.getElementById('modal-reporter').innerText = article.reporter;
+  document.getElementById('modal-reviewer').innerText = article.reviewer;
   document.getElementById('modal-category').innerText = article.category;
   document.getElementById('modal-source').innerText = `Джерело: ${article.source}`;
   document.getElementById('modal-image').src = article.image;
