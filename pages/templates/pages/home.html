@@ -57,7 +57,32 @@
       <p class="text-gray-500 text-sm mt-1">Натисніть на заголовок новини, щоб дізнатися суть маніпуляції та перейти до першоджерела.</p>
     </div>
 
-    <div class="space-y-4" id="news-list"></div>
+    <div class="space-y-4">
+      {% for refutation in refutations %}
+        <article class="bg-white p-4 sm:p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+          {% if refutation.image %}
+            <img src="{{ refutation.image.url }}" alt="{{ refutation.title }}" class="w-full sm:w-40 h-28 object-cover rounded-lg flex-shrink-0">
+          {% endif %}
+          <div class="space-y-1.5 flex-grow">
+            <div class="flex items-center space-x-2 text-xs text-gray-500">
+              <span class="bg-blue-50 text-blue-700 font-bold px-2 py-0.5 rounded">{{ refutation.category }}</span>
+              <span>•</span>
+              <span class="truncate max-w-[200px]">{{ refutation.source }}</span>
+            </div>
+            <h3 onclick="openArticleModal({{ refutation.pk }})" class="text-base sm:text-lg font-bold text-gray-900 hover:text-blue-600 cursor-pointer transition leading-snug">
+              {{ refutation.title }}
+            </h3>
+            <p class="text-gray-600 text-xs sm:text-sm line-clamp-2">{{ refutation.summary }}</p>
+          </div>
+          <button onclick="openArticleModal({{ refutation.pk }})" class="bg-blue-50 hover:bg-blue-100 text-blue-700 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold transition flex items-center space-x-1 flex-shrink-0 self-end sm:self-center">
+            <span>Спростування</span>
+            <span>&rarr;</span>
+          </button>
+        </article>
+      {% empty %}
+        <p class="text-gray-500 text-sm">Спростувань поки немає.</p>
+      {% endfor %}
+    </div>
   </section>
 {% endblock %}
 
@@ -138,5 +163,6 @@
 {% endblock %}
 
 {% block scripts %}
+{{ modal_data|json_script:"refutations-data" }}
 <script src="{% static 'pages/script.js' %}"></script>
 {% endblock %}
