@@ -44,7 +44,7 @@ class Command(BaseCommand):
             with transaction.atomic():
                 report = FakeReport.objects.create(
                     description=item["fake_text"],
-                    status=FakeReport.Status.APPROVED,
+                    status=FakeReport.Status.FAKE,
                     reviewed_by=reviewer,
                 )
                 refutation = Refutation(

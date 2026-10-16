@@ -5,8 +5,8 @@ from django.db import models
 class FakeReport(models.Model):
     class Status(models.TextChoices):
         PENDING = "pending", "Pending"
-        APPROVED = "approved", "Approved"
-        REJECTED = "rejected", "Rejected"
+        FAKE = "fake", "Fake"
+        NOT_FAKE = "not_fake", "Not fake"
 
     link = models.URLField(max_length=2048, blank=True)
     description = models.TextField()

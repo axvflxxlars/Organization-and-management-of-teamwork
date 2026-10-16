@@ -5,7 +5,7 @@ from reports.models import FakeReport, Refutation
 
 def home(request):
     refutations = Refutation.objects.select_related("fake_report__reviewed_by").filter(
-        fake_report__status=FakeReport.Status.APPROVED
+        fake_report__status=FakeReport.Status.FAKE
     )
     modal_data = [
         {
