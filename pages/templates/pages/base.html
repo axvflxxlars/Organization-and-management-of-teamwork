@@ -53,6 +53,8 @@
     </div>
   </footer>
 
+  <!-- variables passed from django view to javascript -->
+  {{ js_context|json_script:"js_context" }}
   {% block scripts %}{% endblock %}
 </body>
 </html>
