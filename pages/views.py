@@ -16,7 +16,7 @@ def home(request):
             "link": r.link,
             "image": r.image.url if r.image else "",
             "fakeText": r.fake_report.description,
-            "reporter": r.fake_report.reporter or "Анонімно",
+            "reporter": r.fake_report.reporter or "Анонімний користувач",
             "reviewer": r.fake_report.reviewed_by.username if r.fake_report.reviewed_by else "—",
             "text": r.text,
         }

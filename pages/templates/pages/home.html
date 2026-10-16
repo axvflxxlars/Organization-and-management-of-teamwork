@@ -73,7 +73,7 @@
               {{ refutation.title }}
             </h3>
             <p class="text-gray-600 text-xs sm:text-sm line-clamp-2">{{ refutation.summary }}</p>
-            <p class="text-gray-400 text-xs">Повідомив: {{ refutation.fake_report.reporter|default:"Анонімно" }} · Перевірив: {{ refutation.fake_report.reviewed_by.username|default:"—" }}</p>
+            <p class="text-gray-400 text-xs">Повідомив: {{ refutation.fake_report.reporter|default:"Анонімний користувач" }} · Перевірив: {{ refutation.fake_report.reviewed_by.username|default:"—" }}</p>
           </div>
           <button onclick="openArticleModal({{ refutation.pk }})" class="bg-blue-50 hover:bg-blue-100 text-blue-700 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold transition flex items-center space-x-1 flex-shrink-0 self-end sm:self-center">
             <span>Спростування</span>
