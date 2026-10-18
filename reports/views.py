@@ -13,7 +13,6 @@ def submit(request):
     return render(request, "reports/submit.html")
 
 
-# Anonymous public endpoint: no session auth involved, so CSRF protection is not needed.
 @csrf_exempt
 @require_POST
 def create_report(request):

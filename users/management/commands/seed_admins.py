@@ -2,7 +2,6 @@ from django.core.management.base import BaseCommand
 
 from users.models import User
 
-# Development credentials. Change them before deploying anywhere public.
 ADMINS = [
     ("admin1", "AHAuPTS3UGSR36"),
     ("admin2", "ptNnMJldrh8JVL"),
