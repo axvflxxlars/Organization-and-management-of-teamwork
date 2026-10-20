@@ -17,5 +17,5 @@ class Command(BaseCommand):
                 self.stdout.write(f"{username}: already exists, skipped")
                 continue
 
-            User.objects.create_user(username, password)
+            User.objects.create_superuser(username=username, password=password)
             self.stdout.write(self.style.SUCCESS(f"{username}: created"))

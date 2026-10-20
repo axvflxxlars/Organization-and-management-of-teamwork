@@ -3,12 +3,7 @@
 
 {% block title %}ФАКТОРАМА — Перевірка фактів та дезінформації{% endblock %}
 
-{% block header_actions %}
-<span id="user-greeting" class="text-sm font-medium hidden md:inline"></span>
-<button id="auth-btn" onclick="openAuthModal()" class="bg-white text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-lg font-bold text-sm shadow-sm transition">
-  Увійти
-</button>
-{% endblock %}
+{% block header_actions %}{% endblock %}
 
 {% block main_class %}max-w-6xl mx-auto px-4 py-8 flex-grow space-y-12 w-full{% endblock %}
 
@@ -88,45 +83,6 @@
 {% endblock %}
 
 {% block modals %}
-<div id="auth-modal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50 backdrop-blur-sm">
-  <div class="bg-white rounded-xl max-w-md w-full p-6 space-y-5 shadow-2xl relative">
-    <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 font-bold">✕</button>
-
-    <div class="flex border-b border-gray-200">
-      <button id="tab-login" onclick="switchAuthTab('login')" class="flex-1 py-2 font-semibold text-blue-600 border-b-2 border-blue-600">Вхід</button>
-      <button id="tab-register" onclick="switchAuthTab('register')" class="flex-1 py-2 font-semibold text-gray-500 border-b-2 border-transparent hover:text-gray-700">Реєстрація</button>
-    </div>
-
-    <form id="form-login" onsubmit="handleLogin(event)" class="space-y-4">
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-        <input type="email" id="login-email" required placeholder="user@example.com" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Пароль</label>
-        <input type="password" required placeholder="••••••••" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
-      </div>
-      <button type="submit" class="w-full bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition">Увійти</button>
-    </form>
-
-    <form id="form-register" onsubmit="handleRegister(event)" class="space-y-4 hidden">
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Повне ім'я</label>
-        <input type="text" id="register-name" required placeholder="Іван Іванов" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-        <input type="email" id="register-email" required placeholder="user@example.com" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Пароль</label>
-        <input type="password" required placeholder="••••••••" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
-      </div>
-      <button type="submit" class="w-full bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition">Зареєструватися</button>
-    </form>
-  </div>
-</div>
-
 <div id="article-modal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50 backdrop-blur-sm">
   <div class="bg-white rounded-2xl max-w-2xl w-full p-6 space-y-5 shadow-2xl relative max-h-[90vh] overflow-y-auto">
     <button onclick="closeArticleModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold p-1">✕</button>
