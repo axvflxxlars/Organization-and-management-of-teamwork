@@ -34,7 +34,17 @@
       {% endwith %}
 
       <div class="flex items-center space-x-3">
-        {% block header_actions %}{% endblock %}
+        {% block header_actions %}
+          {% if request.user.is_authenticated %}
+            <span class="text-sm font-medium hidden md:inline">Привіт, {{ request.user.username }}!</span>
+            <form action="{% url 'admin:logout' %}" method="post" class="inline">
+              {% csrf_token %}
+              <button type="submit" class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-lg font-bold text-sm shadow-sm transition">Вийти</button>
+            </form>
+          {% else %}
+            <a href="{% url 'admin:login' %}" class="bg-white text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-lg font-bold text-sm shadow-sm transition">Увійти</a>
+          {% endif %}
+        {% endblock %}
       </div>
     </div>
   </header>
